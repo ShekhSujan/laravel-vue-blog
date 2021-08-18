@@ -83,7 +83,7 @@ class PostController extends Controller
           if (is_file($path)) {
                     unlink($path);
                 }
-           $img = Image::make($request->thumnail)->resize(400, 200)->save(public_path('uploads/posts/').$file_name);
+           $img = Image::make($request->thumnail)->resize(400, 201)->save(public_path('uploads/posts/').$file_name);
        
         return response()->json(['success'=>true],200);
        }else{
