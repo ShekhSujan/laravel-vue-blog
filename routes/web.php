@@ -7,7 +7,7 @@ Auth::routes();
 
 Route::get('/', function()
 {
-return "hello";
+return view('site.layout');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/{anypath}', [App\Http\Controllers\HomeController::class, 'index'])->where('path','.*');
