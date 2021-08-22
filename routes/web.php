@@ -16,6 +16,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  Route::post('/add-category', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('add_category');
  Route::get('/get-categories', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
  Route::get('/get-active-categories', [App\Http\Controllers\Admin\CategoryController::class, 'getActiveCategories']);
+ Route::get('/active-categories', [App\Http\Controllers\Admin\CategoryController::class, 'activeCategories']);
  Route::get('/remove-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
  Route::get('/show-category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'show']);
  Route::post('/update-category', [App\Http\Controllers\Admin\CategoryController::class, 'update']);

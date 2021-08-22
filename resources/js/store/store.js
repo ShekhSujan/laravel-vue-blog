@@ -40,7 +40,7 @@ export default {
         activeCategories(data) {
             //data is a commit
             axios
-                .get("/get-active-categories")
+                .get("/active-categories")
                 .then(result => {
                     data.commit("categories", result.data.categories);
                 })

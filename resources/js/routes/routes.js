@@ -10,6 +10,7 @@ import posts from "../components/backend/post/manage";
 
 //Public
 import index from "../components/public/index";
+import Category from "../components/public/Category";
 import about from "../components/public/about";
 
 export const routes = [
@@ -25,5 +26,6 @@ export const routes = [
 
     // Public Routes
     { path: "/", component: index },
-    { path: "/about", component: about }
+    { path: "/about", component: about },
+    { path: "/category/:slug", component: Category }
 ];

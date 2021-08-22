@@ -120,6 +120,20 @@
                                                 >About</router-link
                                             >
                                         </li>
+                                        <li
+                                            class=" yamm-fw"
+                                            v-for="category in categories"
+                                            :key="category"
+                                        >
+                                            <router-link
+                                                :to="
+                                                    `/category/${category.slug}`
+                                                "
+                                                >{{
+                                                    category.name
+                                                }}</router-link
+                                            >
+                                        </li>
                                     </ul>
                                     <!-- /.navbar-nav -->
                                     <div class="clearfix"></div>
