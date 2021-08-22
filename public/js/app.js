@@ -5752,6 +5752,65 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index"
 });
@@ -69242,7 +69301,79 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Home")])])
+    return _c("div", [
+      _c("div", { staticClass: "blog-page" }, [
+        _c("div", { staticClass: "col-md-9" }, [
+          _c("div", { staticClass: "blog-post  wow fadeInUp" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                staticClass: "img-responsive",
+                attrs: { src: "images/blog-post/blog_big_01.jpg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("h1", [
+              _c("a", { attrs: { href: "#" } }, [
+                _vm._v(
+                  "Nemo enim ipsam voluptatem quia voluptas sit\n                        aspernatur"
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "author" }, [_vm._v("John Doe")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "review" }, [_vm._v("6 Comments")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "date-time" }, [
+              _vm._v("14/06/2016 10.00AM")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                    sed do eiusmod tempor incididunt ut labore et dolore\n                    magna aliqua. Ut enim ad minim veniam, quis nostrud\n                    exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo consequat. Duis aute irure dolor in\n                    reprehenderit in voluptate velit esse cillum dolore eu\n                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n                    non proident, sunt in culpa qui officia deserunt mollit\n                    anim id est laborum...\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-upper btn-primary read-more",
+                attrs: { href: "#" }
+              },
+              [_vm._v("read more")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 sidebar" }, [
+          _c("div", { staticClass: "sidebar-module-container" }, [
+            _c(
+              "div",
+              { staticClass: "sidebar-widget outer-bottom-xs wow fadeInUp" },
+              [
+                _c("h3", { staticClass: "section-title" }, [
+                  _vm._v("Category")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "sidebar-widget-body m-t-10" }, [
+                  _c("div", { staticClass: "accordion" }, [
+                    _c("div", { staticClass: "accordion-group" }, [
+                      _c("div", { staticClass: "accordion-heading" }, [
+                        _c("a", { attrs: { href: "#collapseOne" } }, [
+                          _vm._v(
+                            "\n                                        Camera\n                                    "
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

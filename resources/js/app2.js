@@ -22,6 +22,7 @@ import { filter } from "./filter/filter";
 import mixin from "./helpers/mixin";
 
 Vue.component("index", require("./components/public/index").default);
+Vue.component("top-header", require("./components/public/Header").default);
 
 //import Index from "./components/public/index";
 

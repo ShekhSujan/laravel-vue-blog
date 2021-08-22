@@ -7,6 +7,9 @@ export default {
         categories(state) {
             return state.categoryDate;
         },
+        activeCategories(state) {
+            return state.categoryDate;
+        },
         posts(state) {
             return state.postDate;
         }
@@ -34,6 +37,18 @@ export default {
                     console.log(err);
                 });
         },
+        activeCategories(data) {
+            //data is a commit
+            axios
+                .get("/get-active-categories")
+                .then(result => {
+                    data.commit("categories", result.data.categories);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        },
+
         getPosts(data) {
             //data is a commit
             axios
