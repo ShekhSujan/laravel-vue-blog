@@ -42,4 +42,5 @@ mix.scripts(
     ],
     "public/js/all.js"
 );
+mix.js("resources/js/app2.js", "public/js/app2.js");
 mix.copyDirectory("resources/sass/site/assets/images", "public/images");

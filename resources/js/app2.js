@@ -17,11 +17,19 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 import storeData from "./store/store";
 const store = new Vuex.Store(storeData);
+
 import { filter } from "./filter/filter";
 import mixin from "./helpers/mixin";
 
+Vue.component("index", require("./components/public/index").default);
+
+//import Index from "./components/public/index";
+
 const app = new Vue({
-    el: "#app",
+    el: "#element",
     router,
     store
+    // components: {
+    //     index: Index
+    // }
 });
