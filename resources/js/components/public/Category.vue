@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Category</h1>
+        {{ this.$route.params.slug }}
     </div>
 </template>
 

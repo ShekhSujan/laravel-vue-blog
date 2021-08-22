@@ -36,36 +36,19 @@
             </div>
 
             <div class="col-md-3 sidebar">
-                <div class="sidebar-module-container">
-                    <!-- ==============================================CATEGORY============================================== -->
-                    <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-                        <h3 class="section-title">Category</h3>
-                        <div class="sidebar-widget-body m-t-10">
-                            <div class="accordion">
-                                <div class="accordion-group">
-                                    <div class="accordion-heading">
-                                        <a href="#collapseOne">
-                                            Camera
-                                        </a>
-                                    </div>
-                                    <!-- /.accordion-heading -->
-                                </div>
-                                <!-- /.accordion-group -->
-                            </div>
-                            <!-- /.accordion -->
-                        </div>
-                        <!-- /.sidebar-widget-body -->
-                    </div>
-                    <!-- /.sidebar-widget -->
-                </div>
+                <sidebar />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import Sidebar from "./sidebar-right";
 export default {
-    name: "index"
+    name: "index",
+    components: {
+        sidebar: Sidebar
+    }
 };
 </script>
 
