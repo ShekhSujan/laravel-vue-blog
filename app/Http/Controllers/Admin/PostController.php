@@ -26,6 +26,15 @@ class PostController extends Controller
 
         ],200);
     }
+    public function categoryPosts($slug)
+    {
+        $categoryId=Category::where('slug',$slug)->first();
+        $posts=Post::where('category_id',$categoryId->id)->get();
+        return response()->json([
+            'posts'=>$posts
+
+        ],200);
+    }
     public function store(Request $request)
     {
       
