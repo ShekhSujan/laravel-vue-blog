@@ -18,6 +18,14 @@ class PostController extends Controller
 
         ],200);
     }
+    public function activePosts()
+    {
+        $posts=Post::with('category','user' )->where('status',Post::activeStatus)->get();
+        return response()->json([
+            'posts'=>$posts
+
+        ],200);
+    }
     public function store(Request $request)
     {
       

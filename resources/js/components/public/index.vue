@@ -2,7 +2,11 @@
     <div>
         <div class="blog-page">
             <div class="col-md-9">
-                <div class="blog-post  wow fadeInUp">
+                <div
+                    class="blog-post  wow fadeInUp"
+                    v-for="post in posts"
+                    :key="post"
+                >
                     <a href="#"
                         ><img
                             class="img-responsive"
@@ -10,10 +14,7 @@
                     /></a>
 
                     <h1>
-                        <a href="#"
-                            >Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur</a
-                        >
+                        <a href="#">{{ post.title }}</a>
                     </h1>
                     <span class="author">John Doe</span>
                     <span class="review">6 Comments</span>
@@ -48,6 +49,17 @@ export default {
     name: "index",
     components: {
         sidebar: Sidebar
+    },
+    data: function() {
+        return {};
+    },
+    mounted() {
+        this.$store.dispatch("getActivePosts");
+    },
+    computed: {
+        posts() {
+            return this.$store.getters.activePosts;
+        }
     }
 };
 </script>

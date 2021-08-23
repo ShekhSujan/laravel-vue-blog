@@ -12,6 +12,9 @@ export default {
         },
         posts(state) {
             return state.postDate;
+        },
+        activePosts(state) {
+            return state.postDate;
         }
     },
     actions: {
@@ -53,6 +56,17 @@ export default {
             //data is a commit
             axios
                 .get("/get-posts")
+                .then(result => {
+                    data.commit("posts", result.data.posts);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        },
+        getActivePosts(data) {
+            //data is a commit
+            axios
+                .get("/get-active-posts")
                 .then(result => {
                     data.commit("posts", result.data.posts);
                 })

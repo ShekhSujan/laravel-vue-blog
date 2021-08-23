@@ -5980,11 +5980,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
   components: {
     sidebar: _sidebar_right__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    this.$store.dispatch("getActivePosts");
+  },
+  computed: {
+    posts: function posts() {
+      return this.$store.getters.activePosts;
+    }
   }
 });
 
@@ -6235,6 +6247,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     posts: function posts(state) {
       return state.postDate;
+    },
+    activePosts: function activePosts(state) {
+      return state.postDate;
     }
   },
   actions: {
@@ -6265,6 +6280,14 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts(data) {
       //data is a commit
       axios.get("/get-posts").then(function (result) {
+        data.commit("posts", result.data.posts);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    getActivePosts: function getActivePosts(data) {
+      //data is a commit
+      axios.get("/get-active-posts").then(function (result) {
         data.commit("posts", result.data.posts);
       })["catch"](function (err) {
         console.log(err);
@@ -66321,7 +66344,47 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "blog-page" }, [
-      _vm._m(0),
+      _c(
+        "div",
+        { staticClass: "col-md-9" },
+        _vm._l(_vm.posts, function(post) {
+          return _c(
+            "div",
+            { key: post, staticClass: "blog-post  wow fadeInUp" },
+            [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c("h1", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(post.title))])
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "author" }, [_vm._v("John Doe")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "review" }, [_vm._v("6 Comments")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "date-time" }, [
+                _vm._v("14/06/2016 10.00AM")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                    sed do eiusmod tempor incididunt ut labore et dolore\n                    magna aliqua. Ut enim ad minim veniam, quis nostrud\n                    exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo consequat. Duis aute irure dolor in\n                    reprehenderit in voluptate velit esse cillum dolore eu\n                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n                    non proident, sunt in culpa qui officia deserunt mollit\n                    anim id est laborum...\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-upper btn-primary read-more",
+                  attrs: { href: "#" }
+                },
+                [_vm._v("read more")]
+              )
+            ]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-3 sidebar" }, [_c("sidebar")], 1)
     ])
@@ -66332,46 +66395,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-9" }, [
-      _c("div", { staticClass: "blog-post  wow fadeInUp" }, [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", {
-            staticClass: "img-responsive",
-            attrs: { src: "images/blog-post/blog_big_01.jpg" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("h1", [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v(
-              "Nemo enim ipsam voluptatem quia voluptas sit\n                        aspernatur"
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "author" }, [_vm._v("John Doe")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "review" }, [_vm._v("6 Comments")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "date-time" }, [
-          _vm._v("14/06/2016 10.00AM")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                    sed do eiusmod tempor incididunt ut labore et dolore\n                    magna aliqua. Ut enim ad minim veniam, quis nostrud\n                    exercitation ullamco laboris nisi ut aliquip ex ea\n                    commodo consequat. Duis aute irure dolor in\n                    reprehenderit in voluptate velit esse cillum dolore eu\n                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat\n                    non proident, sunt in culpa qui officia deserunt mollit\n                    anim id est laborum...\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-upper btn-primary read-more",
-            attrs: { href: "#" }
-          },
-          [_vm._v("read more")]
-        )
-      ])
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("img", {
+        staticClass: "img-responsive",
+        attrs: { src: "images/blog-post/blog_big_01.jpg" }
+      })
     ])
   }
 ]
