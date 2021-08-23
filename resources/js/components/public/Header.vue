@@ -123,7 +123,7 @@
                                         <li
                                             class=" yamm-fw"
                                             v-for="category in categories"
-                                            :key="category"
+                                            :key="category.id"
                                         >
                                             <router-link
                                                 :to="
