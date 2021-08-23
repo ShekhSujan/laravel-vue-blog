@@ -5745,6 +5745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _sidebar_right__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sidebar-right */ "./resources/js/components/public/sidebar-right.vue");
 //
 //
 //
@@ -5752,7 +5753,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "post",
+  components: {
+    sidebar: _sidebar_right__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      post: {}
+    };
+  },
+  mounted: function mounted() {
+    this.getPost();
+  },
+  methods: {
+    getPost: function getPost() {
+      var _this = this;
+
+      axios.get("/get-show-post/" + this.$route.params.slug).then(function (result) {
+        _this.post = result.data.post;
+      })["catch"](function (err) {});
+    }
+  }
+});
 
 /***/ }),
 
@@ -69611,8 +69657,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Post")]),
-    _vm._v("\n    " + _vm._s(this.$route.params.slug) + "\n")
+    _c("div", { staticClass: "blog-page" }, [
+      _c("div", { staticClass: "col-md-9" }, [
+        _c("div", { staticClass: "blog-post  wow fadeInUp" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              staticClass: "img-responsive",
+              attrs: { src: _vm.fileLink(_vm.post.thumnail), width: "100%" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("h1", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(_vm.post.title))])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "author" }, [
+            _vm._v(_vm._s(_vm.post.user.name))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "date-time" }, [
+            _vm._v(" " + _vm._s(_vm._f("time")(_vm.post.created_at)))
+          ]),
+          _vm._v(" "),
+          _c("p", { domProps: { innerHTML: _vm._s("" + _vm.post.content) } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 sidebar" }, [_c("sidebar")], 1)
+    ])
   ])
 }
 var staticRenderFns = []

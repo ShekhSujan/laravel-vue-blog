@@ -26,10 +26,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  //Post
  Route::post('/add-post', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('add_post');
  Route::get('/get-posts', [App\Http\Controllers\Admin\PostController::class, 'index']);
- Route::get('/get-active-posts', [App\Http\Controllers\Admin\PostController::class, 'activePosts']);
  Route::get('/remove-post/{slug}', [App\Http\Controllers\Admin\PostController::class, 'destroy']);
  Route::get('/show-post/{slug}', [App\Http\Controllers\Admin\PostController::class, 'show']);
  Route::post('/update-post', [App\Http\Controllers\Admin\PostController::class, 'update']);
-
  Route::post('/posts/remove-items', [App\Http\Controllers\Admin\PostController::class, 'removeItems']);
  Route::post('/posts/change-status', [App\Http\Controllers\Admin\PostController::class, 'changeStatus']);
+
+  Route::get('/get-active-posts', [App\Http\Controllers\Admin\PostController::class, 'activePosts']);
+ Route::get('/get-show-post/{slug}', [App\Http\Controllers\Admin\PostController::class, 'show']);
