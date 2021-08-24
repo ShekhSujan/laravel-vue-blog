@@ -23,7 +23,7 @@ import mixin from "./helpers/mixin";
 
 Vue.component("index", require("./components/public/index").default);
 Vue.component("top-header", require("./components/public/Header").default);
-
+Vue.component("pagination", require("laravel-vue-pagination"));
 //import Index from "./components/public/index";
 
 const app = new Vue({

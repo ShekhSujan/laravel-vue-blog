@@ -5765,7 +5765,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Categorypost",
+  name: "CategoryPost",
   components: {
     sidebar: _sidebar_right__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -5932,6 +5932,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
@@ -5939,14 +5943,27 @@ __webpack_require__.r(__webpack_exports__);
     sidebar: _sidebar_right__WEBPACK_IMPORTED_MODULE_0__.default
   },
   data: function data() {
-    return {};
+    return {
+      posts: {}
+    };
   },
   mounted: function mounted() {
-    this.$store.dispatch("getActivePosts");
+    // this.$store.dispatch("getActivePosts");
+    this.getResults();
   },
-  computed: {
-    posts: function posts() {
-      return this.$store.getters.activePosts;
+  // computed: {
+  //     posts() {
+  //         return this.$store.getters.activePosts;
+  //     }
+  // },
+  methods: {
+    getResults: function getResults() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("get-active-posts?page=" + page).then(function (response) {
+        _this.posts = response.data;
+      });
     }
   }
 });
@@ -69846,43 +69863,48 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-md-9" },
-        _vm._l(_vm.posts, function(post) {
-          return _c(
-            "div",
-            { key: post.id, staticClass: "blog-post  wow fadeInUp" },
-            [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: { src: _vm.fileLink(post.thumnail), width: "100%" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("h1", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(post.title))])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "author" }, [
-                _vm._v(_vm._s(post.user.name))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "date-time" }, [
-                _vm._v(" " + _vm._s(_vm._f("time")(post.created_at)))
-              ]),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-upper btn-primary read-more",
-                  attrs: { to: "/post/" + post.slug }
-                },
-                [_vm._v("read more")]
-              )
-            ],
-            1
-          )
-        }),
-        0
+        [
+          _vm._l(_vm.posts.data, function(post) {
+            return _c(
+              "div",
+              { key: post.id, staticClass: "blog-post  wow fadeInUp" },
+              [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: { src: _vm.fileLink(post.thumnail), width: "100%" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("h1", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v(_vm._s(post.title))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "date-time" }, [
+                  _vm._v(" " + _vm._s(_vm._f("time")(post.created_at)))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-upper btn-primary read-more",
+                    attrs: { to: "/post/" + post.slug }
+                  },
+                  [_vm._v("read more")]
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c("pagination", {
+            attrs: { data: _vm.posts },
+            on: { "pagination-change-page": _vm.getResults }
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-3 sidebar" }, [_c("sidebar")], 1)

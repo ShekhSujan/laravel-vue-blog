@@ -4,7 +4,7 @@
             <div class="col-md-9">
                 <div
                     class="blog-post  wow fadeInUp"
-                    v-for="post in posts"
+                    v-for="post in posts.data"
                     :key="post.id"
                 >
                     <a href="#"
@@ -18,7 +18,7 @@
                     <h1>
                         <a href="#">{{ post.title }}</a>
                     </h1>
-                    <span class="author">{{ post.user.name }}</span>
+                    <!-- <span class="author">{{ post.user.name }}</span> -->
                     <span class="date-time"> {{ post.created_at | time }}</span>
                     <!-- <p v-html="`${post.content}`"></p> -->
 
@@ -28,6 +28,10 @@
                         >read more</router-link
                     >
                 </div>
+                <pagination
+                    :data="posts"
+                    @pagination-change-page="getResults"
+                ></pagination>
             </div>
 
             <div class="col-md-3 sidebar">
@@ -45,14 +49,24 @@ export default {
         sidebar: Sidebar
     },
     data: function() {
-        return {};
+        return {
+            posts: {}
+        };
     },
     mounted() {
-        this.$store.dispatch("getActivePosts");
+        // this.$store.dispatch("getActivePosts");
+        this.getResults();
     },
-    computed: {
-        posts() {
-            return this.$store.getters.activePosts;
+    // computed: {
+    //     posts() {
+    //         return this.$store.getters.activePosts;
+    //     }
+    // },
+    methods: {
+        getResults(page = 1) {
+            axios.get("get-active-posts?page=" + page).then(response => {
+                this.posts = response.data;
+            });
         }
     }
 };

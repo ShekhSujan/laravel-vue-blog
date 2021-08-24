@@ -40,7 +40,7 @@
     <script>
         import Sidebar from "./sidebar-right";
         export default {
-            name: "Categorypost",
+            name: "CategoryPost",
             components: {
                 sidebar: Sidebar
             },

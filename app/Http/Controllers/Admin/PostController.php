@@ -20,7 +20,8 @@ class PostController extends Controller
     }
     public function activePosts()
     {
-        $posts=Post::with('category','user' )->where('status',Post::activeStatus)->get();
+        // return Post::paginate(1);
+        $posts=Post::with('category','user' )->where('status',Post::activeStatus)->paginate(1);
         return response()->json([
             'posts'=>$posts
 
@@ -29,7 +30,7 @@ class PostController extends Controller
     public function categoryPosts($slug)
     {
         $categoryId=Category::where('slug',$slug)->first();
-        $posts=Post::where('category_id',$categoryId->id)->get();
+        $posts=Post::with('category','user' )->where('category_id',$categoryId->id)->get();
         return response()->json([
             'posts'=>$posts
 
