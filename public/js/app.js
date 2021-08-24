@@ -5777,6 +5777,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getPost();
   },
+  watch: {
+    $route: function $route() {
+      this.getPost();
+    }
+  },
   methods: {
     getPost: function getPost() {
       var _this = this;
@@ -6191,6 +6196,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.mixin({
     },
     fileLink: function fileLink(name) {
       return "uploads/posts/" + name;
+    },
+    subStrWithHtml: function subStrWithHtml(text, length, dot) {
+      return text.substring(0, length) + dot;
     }
   }
 });
@@ -69885,6 +69893,14 @@ var render = function() {
                 _c("span", { staticClass: "date-time" }, [
                   _vm._v(" " + _vm._s(_vm._f("time")(post.created_at)))
                 ]),
+                _vm._v(" "),
+                _c("div", {
+                  domProps: {
+                    innerHTML: _vm._s(
+                      _vm.subStrWithHtml(post.content, 20, "...")
+                    )
+                  }
+                }),
                 _vm._v(" "),
                 _c(
                   "router-link",

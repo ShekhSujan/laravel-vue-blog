@@ -21,7 +21,7 @@
                     <!-- <span class="author">{{ post.user.name }}</span> -->
                     <span class="date-time"> {{ post.created_at | time }}</span>
                     <!-- <p v-html="`${post.content}`"></p> -->
-
+                    <div v-html="subStrWithHtml(post.content, 20, '...')"></div>
                     <router-link
                         :to="`/post/${post.slug}`"
                         class="btn btn-upper btn-primary read-more"
@@ -57,6 +57,7 @@ export default {
         // this.$store.dispatch("getActivePosts");
         this.getResults();
     },
+
     // computed: {
     //     posts() {
     //         return this.$store.getters.activePosts;

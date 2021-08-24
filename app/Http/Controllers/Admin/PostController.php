@@ -20,12 +20,12 @@ class PostController extends Controller
     }
     public function activePosts()
     {
-        // return Post::paginate(1);
-        $posts=Post::with('category','user' )->where('status',Post::activeStatus)->paginate(1);
-        return response()->json([
-            'posts'=>$posts
+         return Post::paginate(1);
+        // $posts=Post::with('category','user' )->where('status',Post::activeStatus)->paginate(1);
+        // return response()->json([
+        //     'posts'=>$posts
 
-        ],200);
+        // ],200);
     }
     public function categoryPosts($slug)
     {
