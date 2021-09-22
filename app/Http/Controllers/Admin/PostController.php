@@ -18,6 +18,24 @@ class PostController extends Controller
 
         ],200);
     }
+    public function activePosts()
+    {
+         return Post::paginate(1);
+        // $posts=Post::with('category','user' )->where('status',Post::activeStatus)->paginate(1);
+        // return response()->json([
+        //     'posts'=>$posts
+
+        // ],200);
+    }
+    public function categoryPosts($slug)
+    {
+        $categoryId=Category::where('slug',$slug)->first();
+        $posts=Post::with('category','user' )->where('category_id',$categoryId->id)->get();
+        return response()->json([
+            'posts'=>$posts
+
+        ],200);
+    }
     public function store(Request $request)
     {
       
@@ -48,7 +66,7 @@ class PostController extends Controller
     }
     public function show($slug)
     {
-          $post=Post::where('slug',$slug)->first();
+          $post=Post::with('category','user' )->where('slug',$slug)->first();
        return response()->json(['post'=>$post],200);
     }
 
@@ -83,7 +101,7 @@ class PostController extends Controller
           if (is_file($path)) {
                     unlink($path);
                 }
-           $img = Image::make($request->thumnail)->resize(400, 200)->save(public_path('uploads/posts/').$file_name);
+           $img = Image::make($request->thumnail)->resize(400, 201)->save(public_path('uploads/posts/').$file_name);
        
         return response()->json(['success'=>true],200);
        }else{

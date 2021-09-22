@@ -11,6 +11,7 @@ class Post extends Model
     protected $fillable=[
       'user_id','category_id','slug','title','content','thumnail','status'
     ];
+    CONST activeStatus="published";
     public function category()
     {
       return $this->belongsTo(Category::class);

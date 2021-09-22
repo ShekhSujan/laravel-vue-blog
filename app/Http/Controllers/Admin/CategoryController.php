@@ -23,6 +23,14 @@ class CategoryController extends Controller
 
         ],200);
     }
+    public function activeCategories()
+    {
+        $categories=Category::where('status',1)->get();
+        return response()->json([
+            'categories'=>$categories
+
+        ],200);
+    }
     public function store(Request $request)
     {
         $request->validate([
