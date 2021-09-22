@@ -42,6 +42,11 @@ export default {
     mounted() {
         this.getPost();
     },
+    watch: {
+        $route() {
+            this.getPost();
+        }
+    },
     methods: {
         getPost: function() {
             axios

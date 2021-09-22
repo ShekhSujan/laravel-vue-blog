@@ -36,3 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
   Route::get('/get-active-posts', [App\Http\Controllers\Admin\PostController::class, 'activePosts']);
  Route::get('/get-show-post/{slug}', [App\Http\Controllers\Admin\PostController::class, 'show']);
  Route::get('/get-category-post/{slug}', [App\Http\Controllers\Admin\PostController::class, 'categoryPosts']);
+
+ Route::get('/{vue_capture?}',function () {
+return view('site.layout');
+	})->where('vue_capture', '[\/\w\.-]*');

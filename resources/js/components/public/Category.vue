@@ -10,8 +10,8 @@
                     <a href="#"
                         ><img
                             class="img-responsive"
-                            :src="fileLink(post.thumnail)"
-                            width="100%"
+                             :src="fileLink(post.thumnail)"
+                                                     width="100%"
                         />
                     </a>
 

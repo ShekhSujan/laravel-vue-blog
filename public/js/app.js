@@ -5850,6 +5850,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getPost();
   },
+  watch: {
+    $route: function $route() {
+      this.getPost();
+    }
+  },
   methods: {
     getPost: function getPost() {
       var _this = this;
@@ -5955,6 +5960,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     // this.$store.dispatch("getActivePosts");
     this.getResults();
+  },
+  watch: {
+    $route: function $route() {
+      this.getResults();
+    }
   },
   // computed: {
   //     posts() {
@@ -6195,7 +6205,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.mixin({
       reader.readAsDataURL(file);
     },
     fileLink: function fileLink(name) {
-      return "uploads/posts/" + name;
+      return "/uploads/posts/" + name;
     },
     subStrWithHtml: function subStrWithHtml(text, length, dot) {
       return text.substring(0, length) + dot;
