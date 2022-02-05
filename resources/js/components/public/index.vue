@@ -57,7 +57,11 @@ export default {
         // this.$store.dispatch("getActivePosts");
         this.getResults();
     },
-
+    watch: {
+        $route() {
+            this.getResults();
+        }
+    },
     // computed: {
     //     posts() {
     //         return this.$store.getters.activePosts;

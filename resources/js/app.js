@@ -9,10 +9,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 //Routes
-import { routes } from "./routes/routes";
+import { routes } from "./routes/routes-admin";
 const router = new VueRouter({
     routes
-    //mode:'history',
+    // mode: "history"
 });
 
 //Sweetalert2

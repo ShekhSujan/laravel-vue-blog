@@ -24,7 +24,7 @@ Vue.mixin({
             reader.readAsDataURL(file);
         },
         fileLink: function(name) {
-            return "uploads/posts/" + name;
+            return "/uploads/posts/" + name;
         },
         subStrWithHtml: function(text, length, dot) {
             return text.substring(0, length) + dot;
